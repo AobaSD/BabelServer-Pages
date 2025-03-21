@@ -1,0 +1,116 @@
+/* 全体のスタイル */
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 50px;
+    background-color: lightgray;
+}
+
+/* ヘッダーのスタイル */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: dimgray;
+    color: white;
+    padding: 15px 15px;
+    font-size: 18px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    right: 250px;
+    z-index: 1001;
+    box-sizing: border-box;
+    position: absolute;
+}
+
+.header-title {
+    font-weight: bold;
+    flex: 1;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.header-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-right: 5px;
+}
+
+/* サイドメニューのスタイル */
+side-menu {
+    display: block;
+    position: fixed;
+    flex-direction: column;
+    width: 250px;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background-color: white;
+    z-index: 1005;
+    gap: 1px;
+}
+
+.side-text {
+    margin-top: 20px;
+    margin-bottom: 30px; /* ボタンとの距離を開ける */
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+.side-button{
+    background-color: white;
+    display: flex;
+    position: static;
+    width: 250px;
+    right: 0;
+    height: 60px;
+    color: black;
+    flex-direction: column;
+    margin: 7px auto;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.side-button:hover{
+    background-color: green;
+    color: white
+}
+
+.button-text-ja{
+    font-size: 20px;
+}
+
+.button-text-en{
+    font-size: 15px;
+    color: green
+}
+
+/* hover時に両方の文字を白にする */
+.side-button:hover .button-text-ja,
+.side-button:hover .button-text-en{
+    color: white;
+}
+
+/* フッター */
+footer {
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #262626;
+    border-top: 1px solid #ccc;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 16px;
+    z-index: 1000;
+    right: 250px;
+    color: white;
+}
