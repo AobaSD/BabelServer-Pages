@@ -6,6 +6,6 @@ deny from all
 
 RewriteEngine on
 
-RewriteCond %{THE_REQUEST} ^.*/index.html
+RewriteCond %{THE_REQUEST} ^.*/main/index.html
 
 RewriteRule ^(.*)index.html$ http://www.babelserver.jp/$1 [R=301,L]
