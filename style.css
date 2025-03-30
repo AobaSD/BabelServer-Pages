@@ -1,116 +1,105 @@
-/* 全体のスタイル */
-body {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    margin: 50px;
-    background-color: lightgray;
+.slideshow {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* FHDのアスペクト比16:9※旧世代ブラウザでは使用不可能 */
 }
 
-/* ヘッダーのスタイル */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: dimgray;
+/* 中央テキストのスタイル */
+.slideshow-text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 100px;  /* 必要に応じて調整 */
     color: white;
-    padding: 15px 15px;
-    font-size: 18px;
+}
+
+.slideshow-subtext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 70px;  /* 必要に応じて調整 */
+    color: white;
+}
+
+.img-main{
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    right: 250px;
-    z-index: 1001;
-    box-sizing: border-box;
-    position: absolute;
-}
-
-.header-title {
-    font-weight: bold;
-    flex: 1;
-    text-align: left;
-    padding-left: 10px;
-}
-
-.header-section {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 8px;
-    flex-shrink: 0;
-    margin-right: 5px;
-}
-
-/* サイドメニューのスタイル */
-side-menu {
-    display: block;
-    position: fixed;
-    flex-direction: column;
-    width: 250px;
-    right: 0;
-    top: 0;
     height: 100%;
-    background-color: white;
-    z-index: 1005;
-    gap: 1px;
+    opacity: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top left;
+    animation: img-animation 25s infinite;
 }
 
-.side-text {
-    margin-top: 20px;
-    margin-bottom: 30px; /* ボタンとの距離を開ける */
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
-    text-align: center;
+.main1{
+    background-image: url("img/main1.png")
 }
 
-.side-button{
-    background-color: white;
-    display: flex;
-    position: static;
-    width: 250px;
-    right: 0;
-    height: 60px;
-    color: black;
-    flex-direction: column;
-    margin: 7px auto;
-    border: none;
-    align-items: center;
-    justify-content: center;
-    line-height: 1.2;
-    font-weight: bold;
+.main2{
+    background-image: url("img/main1.png")
 }
 
-.side-button:hover{
-    background-color: green;
-    color: white
+.main3{
+    background-image: url("img/main1.png")
 }
 
-.button-text-ja{
-    font-size: 20px;
+.main4{
+    background-image: url("img/main1.png")
 }
 
-.button-text-en{
-    font-size: 15px;
-    color: green
+.main5{
+    background-image: url("img/main1.png")
 }
 
-/* hover時に両方の文字を白にする */
-.side-button:hover .button-text-ja,
-.side-button:hover .button-text-en{
-    color: white;
+.img-main:nth-of-type(1) {
+    animation-delay: 0s;
 }
 
-/* フッター */
-footer {
-    margin-top: 50px;
-    padding: 10px;
-    background-color: #262626;
-    border-top: 1px solid #ccc;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    font-size: 16px;
-    z-index: 1000;
-    right: 250px;
-    color: white;
+.img-main:nth-of-type(2) {
+    animation-delay: 5s;
+}
+
+.img-main:nth-of-type(3) {
+    animation-delay: 10s;
+}
+
+.img-main:nth-of-type(4) {
+    animation-delay: 15s;
+}
+
+.img-main:nth-of-type(5) {
+    animation-delay: 20s;
+}
+
+@keyframes img-animation {
+    0%{ opacity: 0;}
+    5%{ opacity: 1;}
+    25%{ opacity: 1;}
+    30%{ opacity: 0;}
+    100%{ opacity: 0;}
+}
+
+.img-announcements{
+    margin: 10px auto 0;
+    transition: filter 0.2s ease;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.img-announcements:hover{
+    filter: brightness(1.5);
+    cursor: pointer;
+}
+
+h1{
+    margin-top: 40px;
+    margin-bottom: 30px;
 }
