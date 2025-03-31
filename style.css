@@ -1,0 +1,107 @@
+.slideshow {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* FHDのアスペクト比16:9※旧世代ブラウザでは使用不可能 */
+}
+
+/* 中央テキストのスタイル */
+.slideshow-text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: clamp(30px, 6vw, 100px);
+    color: white;
+}
+
+.slideshow-subtext {
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: clamp(20px, 4vw, 70px);
+    color: white;
+}
+
+.img-main{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top left;
+    animation: img-animation 25s infinite;
+}
+
+.main1{
+    background-image: url("img/main1.png")
+}
+
+.main2{
+    background-image: url("img/main2.png")
+}
+
+.main3{
+    background-image: url("img/main3.png")
+}
+
+.main4{
+    background-image: url("img/main4.png")
+}
+
+.main5{
+    background-image: url("img/main5.png")
+}
+
+.img-main:nth-of-type(1) {
+    animation-delay: 0s;
+}
+
+.img-main:nth-of-type(2) {
+    animation-delay: 5s;
+}
+
+.img-main:nth-of-type(3) {
+    animation-delay: 10s;
+}
+
+.img-main:nth-of-type(4) {
+    animation-delay: 15s;
+}
+
+.img-main:nth-of-type(5) {
+    animation-delay: 20s;
+}
+
+@keyframes img-animation {
+    0%{ opacity: 0;}
+    5%{ opacity: 1;}
+    25%{ opacity: 1;}
+    30%{ opacity: 0;}
+    100%{ opacity: 0;}
+}
+
+.img-announcements{
+    margin: 10px auto 0;
+    transition: filter 0.2s ease;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.img-announcements:hover{
+    filter: brightness(1.5);
+    cursor: pointer;
+}
+
+h1{
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
