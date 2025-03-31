@@ -11,7 +11,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: bold;
-    font-size: 100px;  /* 必要に応じて調整 */
+    font-size: clamp(30px, 6vw, 100px);
     color: white;
 }
 
@@ -21,7 +21,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: bold;
-    font-size: 70px;  /* 必要に応じて調整 */
+    font-size: clamp(20px, 4vw, 70px);
     color: white;
 }
 
@@ -43,19 +43,19 @@
 }
 
 .main2{
-    background-image: url("img/main1.png")
+    background-image: url("img/main2.png")
 }
 
 .main3{
-    background-image: url("img/main1.png")
+    background-image: url("img/main3.png")
 }
 
 .main4{
-    background-image: url("img/main1.png")
+    background-image: url("img/main4.png")
 }
 
 .main5{
-    background-image: url("img/main1.png")
+    background-image: url("img/main5.png")
 }
 
 .img-main:nth-of-type(1) {
