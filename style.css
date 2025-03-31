@@ -9,6 +9,7 @@
     position: absolute;
     top: 40%;
     left: 50%;
+    width: 100%;
     transform: translate(-50%, -50%);
     font-weight: bold;
     font-size: clamp(30px, 6vw, 100px);
@@ -17,8 +18,9 @@
 
 .slideshow-subtext {
     position: absolute;
-    top: 50%;
+    top: 53%;
     left: 50%;
+    width: 100%;
     transform: translate(-50%, -50%);
     font-weight: bold;
     font-size: clamp(20px, 4vw, 70px);
