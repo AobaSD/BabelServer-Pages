@@ -161,6 +161,9 @@
 
                             const data = await response.json();
 
+                            const playerCount = data.connectedPlayers.length
+                            playerCount.textContent = `${playerCount} / 40 人`
+
                             connectionStatusElement.textContent = '🟢オンライン';
                             connectionStatusElement.className = 'status-text-online';
                             statusContainer.className = 'status-container status success';
