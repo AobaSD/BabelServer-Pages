@@ -118,6 +118,67 @@
                     採掘サーバー情報
                 </h1>
 
+                <div id="status-container" class="status-container">
+                    <div class="server-status">
+                        <span class="status-text">ステータス:</span>
+                        <span id="connectionStatus" class="status">取得中...</span>
+                    </div>
+
+                    <div class="server-count">
+                        <span class="status-text">接続中のプレイヤー</span>
+                        <span id="playerCount" class="status">取得中...</span>
+                    </div>
+                </div>
+
+                <script>
+                    // 必要な変数の宣言(API、更新頻度)
+                    const API_ENDPOINT = 'https://api.ma27inranma.com/bs-seichi/api/v0/status';
+                    const REFRESH_INTERVAL = 30000;
+
+                    // 必要な変数の宣言(文字部分)
+                    const statusContainer = document.getElementById('status-container');
+                    const connectionStatusElement = document.getElementById('connectionStatus');
+
+                    async function fetchAndUpdateStatus() {
+                        console.log('Fetching status...');
+
+                        connectionStatusElement.textContent = '取得中...';
+                        connectionStatusElement.className = 'status-text-loading';
+                        statusContainer.className = 'status-container';
+
+                        // APIリクエスト
+                        try {
+                            const response = await fetch(API_ENDPOINT);
+
+                            if (response.status === 502) {
+                                // オフライン
+                                connectionStatusElement.textContent = '🔴オフライン';
+                                connectionStatusElement.className = 'status-text-offline';
+                            } else if(!response.ok) {
+                                //　その他の要因で失敗
+                                throw new Error(`API may be dead (ステータス: ${response.status})`);
+                            }
+
+                            const data = await response.json();
+
+                            connectionStatusElement.textContent = '🟢オンライン';
+                            connectionStatusElement.className = 'status-text-online';
+                            statusContainer.className = 'status-container status success';
+
+                        } catch (error) {
+                            console.error('failed to fetch status:', error);
+                            connectionStatusElement.textContent = '🟣接続失敗';
+                            connectionStatusElement.className = 'status-text-error';
+                            statusContainer.className = 'status-container status-error';
+
+                        }
+                    }
+
+                    fetchAndUpdateStatus();
+                    setInterval(fetchAndUpdateStatus, REFRESH_INTERVAL);
+
+                </script>
+
             </div>
 
             <footer>
