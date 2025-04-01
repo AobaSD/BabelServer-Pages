@@ -126,7 +126,7 @@
 
                     <div class="server-count">
                         <span class="status-text">接続中のプレイヤー</span>
-                        <span id="playerCount" class="status">取得中...</span>
+                        <span id="countText" class="status">取得中...</span>
                     </div>
                 </div>
 
@@ -162,7 +162,7 @@
                             const data = await response.json();
 
                             const playerCount = data.connectedPlayers.length
-                            playerCount.textContent = `${playerCount} / 40 人`
+                            countText.textContent = `${playerCount} / 40 人`
 
                             connectionStatusElement.textContent = '🟢オンライン';
                             connectionStatusElement.className = 'status-text-online';

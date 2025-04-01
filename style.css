@@ -135,6 +135,10 @@ h1{
     font-size: 4vw;
 }
 
+.status-text-loading{
+    font-size: 4vw;
+}
+
 .status-text-offline{
     font-size: 4vw;
     color: red;
