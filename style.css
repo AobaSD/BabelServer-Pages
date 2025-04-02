@@ -108,7 +108,7 @@
 h1{
     margin-top: 40px;
     margin-bottom: 10px;
-    font-size: 2vw;
+    font-size: 50px;
 }
 
 .status-mining{
@@ -132,28 +132,28 @@ h1{
 }
 
 .status-text{
-    font-size: 2vw;
+    font-size: 30px;
 }
 
 .status{
-    font-size: 4vw;
+    font-size: 70px;
 }
 
 .status-text-loading{
-    font-size: 4vw;
+    font-size: 70px;
 }
 
 .status-text-offline{
-    font-size: 4vw;
+    font-size: 70px;
     color: red;
 }
 
 .status-text-online{
-    font-size: 4vw;
+    font-size: 70px;
     color: forestgreen;
 }
 
 .status-text-error{
-    font-size: 4vw;
+    font-size: 70px;
     color: purple;
 }
