@@ -136,15 +136,16 @@
                     const REFRESH_INTERVAL = 30000;
 
                     // 必要な変数の宣言(文字部分)
-                    const statusContainer = document.getElementById('status-container');
                     const connectionStatusElement = document.getElementById('connectionStatus');
+                    const countTextElement = document.getElementById('countText');
 
                     async function fetchAndUpdateStatus() {
                         console.log('Fetching status...');
 
                         connectionStatusElement.textContent = '取得中...';
                         connectionStatusElement.className = 'status-text-loading';
-                        statusContainer.className = 'status-container';
+                        countTextElement.textContent = '取得中...';
+                        countTextElement.className = 'status-text-loading';
 
                         // APIリクエスト
                         try {
@@ -154,6 +155,7 @@
                                 // オフライン
                                 connectionStatusElement.textContent = '🔴オフライン';
                                 connectionStatusElement.className = 'status-text-offline';
+                                countTextElement.textContent = '0 / 100 人';
                             } else if(!response.ok) {
                                 //　その他の要因で失敗
                                 throw new Error(`API may be dead (ステータス: ${response.status})`);
@@ -162,18 +164,17 @@
                             const data = await response.json();
 
                             const playerCount = data.connectedPlayers.length
-                            countText.textContent = `${playerCount} / 100 人`
+                            countTextElement.textContent = `${playerCount} / 100 人`
 
                             connectionStatusElement.textContent = '🟢オンライン';
                             connectionStatusElement.className = 'status-text-online';
-                            statusContainer.className = 'status-container status success';
 
                         } catch (error) {
                             console.error('failed to fetch status:', error);
                             connectionStatusElement.textContent = '🟣接続失敗';
                             connectionStatusElement.className = 'status-text-error';
-                            statusContainer.className = 'status-container status-error';
-
+                            countTextElement.textContent = '🟣接続失敗';
+                            countTextElement.className = 'status-text-error';
                         }
                     }
 
