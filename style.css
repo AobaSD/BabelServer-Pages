@@ -135,6 +135,7 @@ h1{
     align-items: flex-start;
     flex-direction: column;
     width: 100%;
+    padding-left: 2%;
 }
 
 .status-text{
@@ -142,24 +143,24 @@ h1{
 }
 
 .status{
-    font-size: 70px;
+    font-size: 60px;
 }
 
 .status-text-loading{
-    font-size: 70px;
+    font-size: 60px;
 }
 
 .status-text-offline{
-    font-size: 70px;
+    font-size: 60px;
     color: red;
 }
 
 .status-text-online{
-    font-size: 70px;
+    font-size: 60px;
     color: forestgreen;
 }
 
 .status-text-error{
-    font-size: 70px;
+    font-size: 60px;
     color: purple;
 }

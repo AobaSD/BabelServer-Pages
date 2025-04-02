@@ -1,1 +1,30 @@
 /* ここには表のスタイルを作る */
+
+.tableDescription {
+    text-align: left;
+    padding-left: 3%;
+    font-size: 20px;
+}
+
+.table {
+    text-align: center;
+    width: 90%;
+    margin: 0 auto 40px;
+    border-collapse: collapse;
+}
+
+.table tr {
+    height: 35px;
+}
+
+th {
+    width: 25%;
+}
+
+.baseTable {
+    width: 50%;
+}
+
+table{
+    border: 1px solid black;
+}

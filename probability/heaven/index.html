@@ -1,0 +1,441 @@
+<!DOCTYPE HTML>
+
+<html lang="ja">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../src/style.css">
+        <link rel="stylesheet" href="/src/style.css">
+
+        <title>
+            Babel Server
+        </title>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <!-- ヘッダー -->
+            <header>
+                <div class="header-title">
+                    <a href="../../" style="color: white; text-decoration: none;">
+                        Babel Server
+                    </a>
+                </div>
+
+                <button class="hamburger-menu" onclick="toggleSideMenu()">☰</button>
+            </header>
+
+            <!-- サイドメニュー -->
+            <side-menu>
+                <div class="side-text">
+                    メニュー
+                </div>
+
+                <button class="side-button" onclick="location.href='../../mining-server'">
+                    <span class="button-text-ja">
+                        採掘サーバー
+                    </span>
+
+                    <span class="button-text-en">
+                        Mining Server
+                    </span>
+                </button>
+
+                <button class="side-button" onclick="location.href='../../how-to-join'">
+                    <span class="button-text-ja">
+                        参加方法
+                    </span>
+
+                    <span class="button-text-en">
+                        How to join
+                    </span>
+                </button>
+
+                <button class="side-button" onclick="location.href='../../moderators'">
+                    <span class="button-text-ja">
+                        権限者
+                    </span>
+
+                    <span class="button-text-en">
+                        Moderators
+                    </span>
+                </button>
+
+                <button class="side-button" onclick="location.href='../../announcements'">
+                    <span class="button-text-ja">
+                        お知らせ
+                    </span>
+
+                    <span class="button-text-en">
+                        Announcements
+                    </span>
+                </button>
+
+                <button class="side-button" onclick="location.href='../../recruitment'">
+                    <span class="button-text-ja">
+                        採用情報
+                    </span>
+
+                    <span class="button-text-en">
+                        Recruitment
+                    </span>
+                </button>
+
+                <button class="side-button" onclick="location.href='../../contact-us'">
+                    <span class="button-text-ja">
+                        お問い合わせ
+                    </span>
+
+                    <span class="button-text-en">
+                        Contact Us
+                    </span>
+                </button>
+
+            </side-menu>
+
+            <div id="overlay"></div>
+
+            <script src="/src/script.js"></script>
+
+            <!-- 内容部分 -->
+            <div class="container">
+                <h1>
+                    排出確率表（天界）
+                </h1>
+
+                <p class="tableDescription">
+                    1採掘あたりの入手金額と経験値
+                </p>
+
+                <table class="table">
+                    <tr>
+                        <th class="baseTable">入手金額</th>
+                        <td class="baseTable">17 Money</td>
+                    </tr>
+
+                    <tr>
+                        <th class="baseTable">入手経験値</th>
+                        <td class="baseTable">5% で 10 Exp</td>
+                    </tr>
+                </table>
+
+                <p class="tableDescription">
+                    ブロック生成確率表
+                </p>
+
+                <table class="table">
+                    <tr>
+                        <th>ブロック名</th>
+                        <th>ブロックID</th>
+                        <th>出現確率</th>
+                        <th>1採掘場あたりの出現数の目安</th>
+                    </tr>
+
+                    <tr>
+                        <td>白いコンクリートブロック</td>
+                        <td>minecraft:white_concrete</td>
+                        <td>99.884%</td>
+                        <td>約 209,756 個</td>
+                    </tr>
+
+                    <tr>
+                        <td>鉄ブロック</td>
+                        <td>minecraft:iron_block</td>
+                        <td>0.1%</td>
+                        <td>約 210 個</td>
+                    </tr>
+
+                    <tr>
+                        <td>クォーツブロック</td>
+                        <td>minecraft:quartz_block</td>
+                        <td>0.01%</td>
+                        <td>約 21 個</td>
+                    </tr>
+
+                    <tr>
+                        <td>エンドレンガブロック</td>
+                        <td>minecraft:end_bricks</td>
+                        <td>0.005%</td>
+                        <td>約 11 個</td>
+                    </tr>
+                </table>
+
+                <p class="tableDescription">
+                    アイテム排出確率(白いコンクリートブロック)
+                </p>
+
+                <table class="table">
+                    <tr>
+                        <th>アイテム名</th>
+                        <th>ランク</th>
+                        <th>出現確率</th>
+                        <th>1採掘場あたりの入手可能数の目安</th>
+                    </tr>
+
+                    <tr>
+                        <td>セメント</td>
+                        <td>C</td>
+                        <td>90.0%</td>
+                        <td>約 188,780 個</td>
+                    </tr>
+
+                    <tr>
+                        <td>ただのコンクリート</td>
+                        <td>B</td>
+                        <td>10.0%</td>
+                        <td>約 20,976 個</td>
+                    </tr>
+                </table>
+
+                <p class="tableDescription">
+                    アイテム排出確率(鉄ブロック)
+                </p>
+
+                <table class="table">
+                    <tr>
+                        <th>アイテム名</th>
+                        <th>ランク</th>
+                        <th>出現確率</th>
+                        <th>1採掘場あたりの入手可能数の目安</th>
+                    </tr>
+
+                    <tr>
+                        <td>白銀に輝く銀塊</td>
+                        <td>B</td>
+                        <td>98.0%</td>
+                        <td>約 206 個</td>
+                    </tr>
+
+                    <tr>
+                        <td>美しい鉄のかけら</td>
+                        <td>A</td>
+                        <td>1.5%</td>
+                        <td>約 3 個</td>
+                    </tr>
+
+                    <tr>
+                        <td>美しい鉄</td>
+                        <td>S</td>
+                        <td>0.5%</td>
+                        <td>約 1 個</td>
+                    </tr>
+                </table>
+
+                <p class="tableDescription">
+                    アイテム排出確率(クォーツブロック)
+                </p>
+
+                <table class="table">
+                    <tr>
+                        <th>アイテム名</th>
+                        <th>ランク</th>
+                        <th>出現確率</th>
+                        <th>1採掘場あたりの入手可能数の目安</th>
+                    </tr>
+
+                    <tr>
+                        <td>クォーツのかけら</td>
+                        <td>B</td>
+                        <td>98.5%</td>
+                        <td>約 21 個</td>
+                    </tr>
+
+                    <tr>
+                        <td>純白な花</td>
+                        <td>S</td>
+                        <td>1.0%</td>
+                        <td>全堀り5回で 約 1 個</td>
+                    </tr>
+
+                    <tr>
+                        <td>普通の閃緑岩</td>
+                        <td>A</td>
+                        <td>0.5%</td>
+                        <td>全堀り9回で 約 1 個</td>
+                    </tr>
+                </table>
+
+                <p class="tableDescription">
+                    アイテム排出確率(エンドレンガブロック)
+                </p>
+
+                <table class="table">
+                    <tr>
+                        <th>アイテム名</th>
+                        <th>ランク</th>
+                        <th>出現確率</th>
+                        <th>1採掘場あたりの入手可能数の目安</th>
+                    </tr>
+
+                    <tr>
+                        <td>天界の蕾</td>
+                        <td>S</td>
+                        <td>96.0%</td>
+                        <td>約 11 個</td>
+                    </tr>
+
+                    <tr>
+                        <td>スキルガチャチケット</td>
+                        <td>SS</td>
+                        <td>2.0%</td>
+                        <td>全堀り5回で 約 1 個</td>
+                    </tr>
+
+                    <tr>
+                        <td>天界の翼</td>
+                        <td>SS</td>
+                        <td>1.5%</td>
+                        <td>全堀り6回で 約 1 個</td>
+                    </tr>
+
+                    <tr>
+                        <td>天界の花</td>
+                        <td>?</td>
+                        <td>0.5%</td>
+                        <td>全堀り20回で 約 1 個</td>
+                    </tr>
+                </table>
+            </div>
+
+            <footer>
+                <div class="footer-content">
+                    <!-- 左カラム：排出確率 -->
+                    <div class="footer-column">
+                        <div class="footer-title">
+                            排出確率
+                        </div>
+
+                        <ul>
+                            <li>
+                                <a href="../cave">
+                                    洞窟
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../nether">
+                                    ネザー
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../end">
+                                    エンド
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../ocean">
+                                    海
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../temple">
+                                    海底神殿
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../demise">
+                                    終焉
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../gold">
+                                    黄金
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../heaven">
+                                    天界
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 中央カラム：Babel Server -->
+                    <div class="footer-column">
+                        <div class="footer-title">
+                            Babel Server
+                        </div>
+
+                        <ul>
+                            <li>
+                                <a href="../../mining-server">
+                                    採掘サーバー
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../../how-to-join">
+                                    参加方法
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../../moderators">
+                                    権限者
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../../announcements">
+                                    お知らせ
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../../recruitment">
+                                    採用情報
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../../contact-us">
+                                    お問い合わせ
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 右カラム：その他 -->
+                    <div class="footer-column">
+                        <div class="footer-title">
+                            その他
+                        </div>
+
+                        <ul>
+                            <li>
+                                <a href="../../others/ranking">
+                                    ランキング
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../../others/room">
+                                    個人部屋
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../../others/about">
+                                    このサイトについて
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- フッター最下部 -->
+                <div class="footer-bottom">
+                    Babel Server
+                </div>
+            </footer>
+        </div>
+    </body>
+
+</html>
