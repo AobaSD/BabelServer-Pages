@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="src/style.css">
+        <link rel="stylesheet" href="/src/style.css">
 
         <title>
             Babel Server
@@ -22,6 +22,8 @@
                         Babel Server
                     </a>
                 </div>
+
+                <button class="hamburger-menu" onclick="toggleSideMenu()">☰</button>
             </header>
 
             <!-- サイドメニュー -->
@@ -60,7 +62,7 @@
                     </span>
                 </button>
 
-                <button class="side-button" onclick="location.href='announcements'">
+                <button class="side-button" onclick="location.href='/announcements'">
                     <span class="button-text-ja">
                         お知らせ
                     </span>
@@ -92,6 +94,10 @@
 
             </side-menu>
 
+            <div id="overlay"></div>
+
+            <script src="/src/script.js"></script>
+
             <!-- 内容部分 -->
             <div class="container">
                 <div class="slideshow">
@@ -119,14 +125,16 @@
                 </h1>
 
                 <div id="status-container" class="status-container">
-                    <div class="server-status">
-                        <span class="status-text">ステータス:</span>
-                        <span id="connectionStatus" class="status">取得中...</span>
-                    </div>
+                    <div class="status-mining">
+                        <div class="server-status">
+                            <span class="status-text">ステータス:</span>
+                            <span id="connectionStatus" class="status">⚫取得中</span>
+                        </div>
 
-                    <div class="server-count">
-                        <span class="status-text">接続中のプレイヤー</span>
-                        <span id="countText" class="status">取得中...</span>
+                        <div class="server-count">
+                            <span class="status-text">接続中のプレイヤー:</span>
+                            <span id="countText" class="status">⚫取得中</span>
+                        </div>
                     </div>
                 </div>
 
@@ -142,9 +150,9 @@
                     async function fetchAndUpdateStatus() {
                         console.log('Fetching status...');
 
-                        connectionStatusElement.textContent = '取得中...';
+                        connectionStatusElement.textContent = '⚫取得中';
                         connectionStatusElement.className = 'status-text-loading';
-                        countTextElement.textContent = '取得中...';
+                        countTextElement.textContent = '⚫取得中';
                         countTextElement.className = 'status-text-loading';
 
                         // APIリクエスト

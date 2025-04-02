@@ -9,17 +9,26 @@ body {
 .wrapper{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     padding-top: 50px; /* ヘッダーの高さに合わせる */
-    padding-right: 250px; /* サイドメニュー幅を考慮 */
     box-sizing: border-box;
+}
+
+@media (max-width:768px) {
+    .wrapper {
+        padding-right: 0;
+    }
+}
+
+@media (min-width:769px) {
+    .wrapper {
+        padding-right: 250px;
+    }
 }
 
 .container {
     position: relative;
     top: 0;
     left: 0;
-    right: 250px;
     flex: 1;
     padding: 0;
     box-sizing: border-box;
@@ -27,21 +36,42 @@ body {
 }
 
 /* ヘッダーのスタイル */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #235224;
-    color: white;
-    padding: 15px 15px;
-    font-size: 18px;
-    top: 0;
-    left: 0;
-    width: 100%;
-    right: 250px;
-    z-index: 1001;
-    box-sizing: border-box;
-    position: absolute;
+@media (max-width:768px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #235224;
+        color: white;
+        padding: 15px 15px;
+        font-size: 18px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        right: 250px;
+        z-index: 1001;
+        box-sizing: border-box;
+        position: fixed;
+    }
+}
+
+@media (min-width:769px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #235224;
+        color: white;
+        padding: 15px 15px;
+        font-size: 18px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        right: 250px;
+        z-index: 1001;
+        box-sizing: border-box;
+        position: absolute;
+    }
 }
 
 .header-title {
@@ -60,19 +90,103 @@ header {
     margin-right: 5px;
 }
 
-/* サイドメニューのスタイル */
-side-menu {
-    display: block;
-    position: fixed;
-    flex-direction: column;
-    width: 250px;
-    right: 0;
+.hamburger-menu {
+    display: none;
+    position: absolute;
     top: 0;
-    height: 100%;
-    background-color: white;
-    z-index: 1005;
-    gap: 1px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 35px;
+    cursor: pointer;
+    color: white
 }
+
+/* 画面幅 */
+@media (max-width: 768px) {
+    side-menu {
+        display: none;
+        position: fixed;
+        flex-direction: column;
+        width: 250px;
+        right: 0;
+        top: 50px;
+        height: 100%;
+        background-color: white;
+        z-index: 1005;
+        gap: 1px;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+}
+
+/* サイドメニューのスタイル */
+@media (min-width: 769px) {
+    side-menu {
+        display: block;
+        position: fixed;
+        flex-direction: column;
+        width: 250px;
+        right: 0;
+        top: 0;
+        height: 100%;
+        background-color: white;
+        z-index: 1005;
+        gap: 1px;
+    }
+}
+
+/* サイドメニューのスライドアニメーション */
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+}
+
+side-menu.slide-in {
+    animation: slideIn 0.3s forwards;
+}
+
+side-menu.slide-out {
+    animation: slideOut 0.3s forwards;
+}
+
+/* オーバーレイのフェードアニメーション */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000; /* サイドメニューより低いz-index */
+}
+
+#overlay.fade-in {
+    animation: fadeIn 0.3s forwards;
+}
+
+#overlay.fade-out {
+    animation: fadeOut 0.3s forwards;
+}
+
 
 .side-text {
     margin-top: 20px;
