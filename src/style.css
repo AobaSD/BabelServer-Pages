@@ -298,3 +298,52 @@ footer {
     border-top: 1px solid #ccc;
     padding-top: 10px;
 }
+
+.about {
+    text-align: left;
+    margin-left: 2%;
+    font-size: 30px;
+}
+
+.about-text {
+    text-align: left;
+    margin-left: 2%;
+    font-size: 18px;
+    color: #303030;
+    margin-bottom: 50px;
+}
+
+.tableDescription {
+    text-align: left;
+    padding-left: 3%;
+    font-size: 20px;
+}
+
+.table {
+    text-align: center;
+    width: 90%;
+    margin: 0 auto 40px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    height: 35px;
+    font-size: 17px;
+}
+
+.roomNumber {
+    width: 10%;
+}
+
+.roomOwner {
+    width: 20%
+}
+
+.roomCohabitant {
+    width: 40%
+}
+
+.roomPrice {
+    width: 30%
+}
