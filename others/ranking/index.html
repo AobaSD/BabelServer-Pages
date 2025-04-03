@@ -100,23 +100,28 @@
                 <div id="table-container"></div>
 
                 <script>
-                    // 色コード（例：§g、§e、§fなど）を削除する関数
+                    // 色コード（例：§g、§e、§fなど）のうち、先頭の「§」とその直後の1文字のみ削除する関数
                     function removeColorCodes(str) {
                         return str.replace(/§[a-zA-Z0-9]/g, '').trim();
                     }
 
                     // 生データからテーブル用のデータを抽出し、テーブルを生成して表示する関数
                     function createTableFromRawData(rawData) {
-                        // 取得したデータをデバッグ出力
                         console.log("Raw Data:", rawData);
 
-                        // 改行コードにCRLFにも対応し、空行を除去する
-                        const lines = rawData.trim().split(/\r?\n/).filter(line => line.trim() !== "");
+                        // もしデータ内に <br> タグがある場合、改行文字に置き換える
+                        rawData = rawData.replace(/<br\s*\/?>/gi, "\n");
+
+                        // 改行コード（CRLF, LF, CRすべてに対応）で分割し、空行を除去する
+                        const lines = rawData.trim().split(/\r\n|\n|\r/).filter(line => line.trim() !== "");
                         if (lines.length === 0) {
                             console.log("データがありません。");
                             return;
                         }
+
+                        // ヘッダーは1行目、色コードを除去して取得
                         const headerLabel = removeColorCodes(lines[0]);
+                        // 2行目以降をデータとして扱う
                         const dataRows = lines.slice(1);
 
                         // 各行から名前と数値を抽出
@@ -161,12 +166,13 @@
                         });
                         table.appendChild(tbody);
 
+                        // テーブルを表示する要素（例：<div id="table-container"></div>）に追加
                         document.getElementById('table-container').appendChild(table);
                     }
 
                     // DOM読み込み完了後にAPIからデータ取得
                     document.addEventListener('DOMContentLoaded', function() {
-                        fetch('https://api.ma27inranma.com/bs-seichi/api/v0/leaderboard', {
+                        fetch('https://example.com', {
                             headers: {
                                 'LeaderboardType': 'money'
                             }
