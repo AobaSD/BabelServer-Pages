@@ -319,7 +319,7 @@ footer {
     font-size: 20px;
 }
 
-.table {
+table {
     text-align: center;
     width: 90%;
     margin: 0 auto 40px;
@@ -346,4 +346,14 @@ table, th, td {
 
 .roomPrice {
     width: 30%
+}
+
+#table-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.dataTable {
+
 }
