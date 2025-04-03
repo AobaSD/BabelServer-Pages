@@ -94,8 +94,90 @@
             <!-- 内容部分 -->
             <div class="container">
                 <h1>
-                    内容部分
+                    所持金ランキング
                 </h1>
+
+                <div id="table-container"></div>
+
+                <script>
+                    // 色コード（例：§g、§e、§fなど）を削除する関数
+                    function removeColorCodes(str) {
+                        return str.replace(/§[a-zA-Z0-9]+/g, '').trim();
+                    }
+
+                    // 生データからテーブル用のデータを抽出し、テーブルを生成して表示する関数
+                    function createTableFromRawData(rawData) {
+                        // 行ごとに分割。最初の行はヘッダーラベル（例：「所持金」）として利用
+                        const lines = rawData.trim().split('\n');
+                        if (lines.length === 0) return;
+
+                        const headerLabel = removeColorCodes(lines[0]);
+                        const dataRows = lines.slice(1);
+
+                        // 各行から名前と数値を抽出
+                        const tableData = dataRows.map(row => {
+                            const cleanRow = removeColorCodes(row);
+                            const parts = cleanRow.split(':');
+                            return {
+                                name: parts[0].trim(),
+                                money: parts[1].trim()
+                            };
+                        });
+
+                        // テーブル生成
+                        const table = document.createElement('table');
+                        const thead = document.createElement('thead');
+                        const headerRow = document.createElement('tr');
+
+                        const thName = document.createElement('th');
+                        thName.textContent = '名前';
+                        const thMoney = document.createElement('th');
+                        thMoney.textContent = headerLabel;
+
+                        headerRow.appendChild(thName);
+                        headerRow.appendChild(thMoney);
+                        thead.appendChild(headerRow);
+                        table.appendChild(thead);
+
+                        const tbody = document.createElement('tbody');
+                        tableData.forEach(item => {
+                            const tr = document.createElement('tr');
+                            const tdName = document.createElement('td');
+                            tdName.textContent = item.name;
+                            const tdMoney = document.createElement('td');
+                            tdMoney.textContent = item.money;
+                            tr.appendChild(tdName);
+                            tr.appendChild(tdMoney);
+                            tbody.appendChild(tr);
+                        });
+                        table.appendChild(tbody);
+
+                        document.getElementById('table-container').appendChild(table);
+                    }
+
+                    // DOMの読み込み完了後にAPIからデータを取得
+                    document.addEventListener('DOMContentLoaded', function() {
+                        fetch('https://api.ma27inranma.com/bs-seichi/api/v0/leaderboard', {
+                            headers: {
+                                'LeaderboardType': 'money'
+                            }
+                        })
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Network response was not ok: ' + response.statusText);
+                                }
+                                return response.text();
+                            })
+                            .then(rawData => {
+                                // 取得したデータをもとにテーブルを生成
+                                createTableFromRawData(rawData);
+                            })
+                            .catch(error => {
+                                // APIからデータが取得できなかった場合、エラーをコンソールに出力
+                                console.log('Error fetching leaderboard data:', error);
+                            });
+                    });
+                </script>
             </div>
 
             <footer>
