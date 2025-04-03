@@ -102,7 +102,7 @@
                 <script>
                     // 色コード（例：§g、§e、§fなど）を削除する関数
                     function removeColorCodes(str) {
-                        return str.replace(/§[a-zA-Z0-9]+/g, '').trim();
+                        return str.replace(/§[a-zA-Z0-9]/g, '').trim();
                     }
 
                     // 生データからテーブル用のデータを抽出し、テーブルを生成して表示する関数
