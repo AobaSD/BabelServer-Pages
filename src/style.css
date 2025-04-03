@@ -421,3 +421,9 @@ table, th, td {
 #table-breaks tbody td {
     border-bottom: 1px solid royalblue;
 }
+
+.aboutLine {
+    width: 98%;
+    background-color: darkgreen;
+    height: 1px;
+}

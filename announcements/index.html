@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../src/style.css">
+        <link rel="stylesheet" href="/src/style.css">
 
         <title>
             Babel Server
@@ -21,6 +21,8 @@
                         Babel Server
                     </a>
                 </div>
+
+                <button class="hamburger-menu" onclick="toggleSideMenu()">☰</button>
             </header>
 
             <!-- サイドメニュー -->
@@ -30,73 +32,76 @@
                 </div>
 
                 <button class="side-button" onclick="location.href='../mining-server'">
-                            <span class="button-text-ja">
-                                採掘サーバー
-                            </span>
+                    <span class="button-text-ja">
+                        採掘サーバー
+                    </span>
 
                     <span class="button-text-en">
-                                Mining Server
-                            </span>
+                        Mining Server
+                    </span>
                 </button>
 
                 <button class="side-button" onclick="location.href='../how-to-join'">
-                            <span class="button-text-ja">
-                                参加方法
-                            </span>
+                    <span class="button-text-ja">
+                        参加方法
+                    </span>
 
                     <span class="button-text-en">
-                                How to join
-                            </span>
+                        How to join
+                    </span>
                 </button>
 
                 <button class="side-button" onclick="location.href='../moderators'">
-                            <span class="button-text-ja">
-                                権限者
-                            </span>
+                    <span class="button-text-ja">
+                        権限者
+                    </span>
 
                     <span class="button-text-en">
-                                Moderators
-                            </span>
+                        Moderators
+                    </span>
                 </button>
 
                 <button class="side-button" onclick="location.href='../announcements'">
-                            <span class="button-text-ja">
-                                お知らせ
-                            </span>
+                    <span class="button-text-ja">
+                        お知らせ
+                    </span>
 
                     <span class="button-text-en">
-                                Announcements
-                            </span>
+                        Announcements
+                    </span>
                 </button>
 
                 <button class="side-button" onclick="location.href='../recruitment'">
-                            <span class="button-text-ja">
-                                採用情報
-                            </span>
+                    <span class="button-text-ja">
+                        採用情報
+                    </span>
 
                     <span class="button-text-en">
-                                Recruitment
-                            </span>
+                        Recruitment
+                    </span>
                 </button>
 
                 <button class="side-button" onclick="location.href='../contact-us'">
-                            <span class="button-text-ja">
-                                お問い合わせ
-                            </span>
+                    <span class="button-text-ja">
+                        お問い合わせ
+                    </span>
 
                     <span class="button-text-en">
-                                Contact Us
-                            </span>
+                        Contact Us
+                    </span>
                 </button>
 
             </side-menu>
 
+            <div id="overlay"></div>
+
+            <script src="/src/script.js"></script>
+
             <!-- 内容部分 -->
             <div class="container">
                 <h1>
-                    コンテンツ部分
+                    ここに内容を表示する
                 </h1>
-
             </div>
 
             <footer>
