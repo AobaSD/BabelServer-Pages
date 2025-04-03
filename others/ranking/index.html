@@ -97,19 +97,22 @@
                     所持金ランキング
                 </h1>
 
-                <div id="table-container"></div>
+                <div id="table-container">
+                    <div id="table-money"></div>
+                    <div id="table-breaks"></div>
+                </div>
 
                 <script>
-                    // 色コード（例：§g、§e、§fなど）のうち、先頭の「§」とその直後の1文字のみ削除する関数
+                    // 色コード（例：§g、§e、§f）のうち、先頭の「§」とその直後の1文字だけ削除する関数
                     function removeColorCodes(str) {
                         return str.replace(/§[a-zA-Z0-9]/g, '').trim();
                     }
 
-                    // 生データからテーブル用のデータを抽出し、テーブルを生成して表示する関数
-                    function createTableFromRawData(rawData) {
+                    // 生データからテーブル用のデータを抽出し、指定したコンテナにテーブルを生成して表示する関数
+                    function createTableFromRawData(rawData, container) {
                         console.log("Raw Data:", rawData);
 
-                        // もしデータ内に <br> タグがある場合、改行文字に置き換える
+                        // <br> タグを改行文字に置換（HTML形式の場合の対応）
                         rawData = rawData.replace(/<br\s*\/?>/gi, "\n");
 
                         // 改行コード（CRLF, LF, CRすべてに対応）で分割し、空行を除去する
@@ -119,7 +122,7 @@
                             return;
                         }
 
-                        // ヘッダーは1行目、色コードを除去して取得
+                        // ヘッダー（1行目）の色コードを除去して取得
                         const headerLabel = removeColorCodes(lines[0]);
                         // 2行目以降をデータとして扱う
                         const dataRows = lines.slice(1);
@@ -166,15 +169,15 @@
                         });
                         table.appendChild(tbody);
 
-                        // テーブルを表示する要素（例：<div id="table-container"></div>）に追加
-                        document.getElementById('table-container').appendChild(table);
+                        // 指定したコンテナにテーブルを追加
+                        container.appendChild(table);
                     }
 
-                    // DOM読み込み完了後にAPIからデータ取得
-                    document.addEventListener('DOMContentLoaded', function() {
+                    // 指定のLeaderboardTypeを使ってAPIからデータを取得し、テーブルを作成する関数
+                    function fetchAndDisplayTable(leaderboardType, containerId) {
                         fetch('https://api.ma27inranma.com/bs-seichi/api/v0/leaderboard', {
                             headers: {
-                                'LeaderboardType': 'money'
+                                'LeaderboardType': leaderboardType
                             }
                         })
                             .then(response => {
@@ -184,11 +187,18 @@
                                 return response.text();
                             })
                             .then(rawData => {
-                                createTableFromRawData(rawData);
+                                const container = document.getElementById(containerId);
+                                createTableFromRawData(rawData, container);
                             })
                             .catch(error => {
-                                console.log('Error fetching leaderboard data:', error);
+                                console.log('Error fetching leaderboard data for ' + leaderboardType + ':', error);
                             });
+                    }
+
+                    // DOM読み込み完了後に両方のテーブルを取得して表示
+                    document.addEventListener('DOMContentLoaded', function() {
+                        fetchAndDisplayTable('money', 'table-money');
+                        fetchAndDisplayTable('breaks', 'table-breaks');
                     });
                 </script>
             </div>
