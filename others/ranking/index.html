@@ -21,6 +21,8 @@
                         Babel Server
                     </a>
                 </div>
+
+                <button class="hamburger-menu" onclick="toggleSideMenu()">☰</button>
             </header>
 
             <!-- サイドメニュー -->
@@ -40,79 +42,84 @@
                 </button>
 
                 <button class="side-button" onclick="location.href='../../how-to-join'">
-                            <span class="button-text-ja">
-                                参加方法
-                            </span>
+                    <span class="button-text-ja">
+                        参加方法
+                    </span>
 
                     <span class="button-text-en">
-                                How to join
-                            </span>
+                        How to join
+                    </span>
                 </button>
 
                 <button class="side-button" onclick="location.href='../../moderators'">
-                            <span class="button-text-ja">
-                                権限者
-                            </span>
+                    <span class="button-text-ja">
+                        権限者
+                    </span>
 
                     <span class="button-text-en">
-                                Moderators
-                            </span>
+                        Moderators
+                    </span>
                 </button>
 
                 <button class="side-button" onclick="location.href='../../announcements'">
-                            <span class="button-text-ja">
-                                お知らせ
-                            </span>
+                    <span class="button-text-ja">
+                        お知らせ
+                    </span>
 
                     <span class="button-text-en">
-                                Announcements
-                            </span>
+                        Announcements
+                    </span>
                 </button>
 
                 <button class="side-button" onclick="location.href='../../recruitment'">
-                            <span class="button-text-ja">
-                                採用情報
-                            </span>
+                    <span class="button-text-ja">
+                        採用情報
+                    </span>
 
                     <span class="button-text-en">
-                                Recruitment
-                            </span>
+                        Recruitment
+                    </span>
                 </button>
 
                 <button class="side-button" onclick="location.href='../../contact-us'">
-                            <span class="button-text-ja">
-                                お問い合わせ
-                            </span>
+                    <span class="button-text-ja">
+                        お問い合わせ
+                    </span>
 
                     <span class="button-text-en">
-                                Contact Us
-                            </span>
+                        Contact Us
+                    </span>
                 </button>
 
             </side-menu>
 
+            <div id="overlay"></div>
+
+            <script src="/src/script.js"></script>
+
             <!-- 内容部分 -->
             <div class="container">
                 <h1>
-                    所持金ランキング
+                    プレイヤーランキング
                 </h1>
 
-                <div id="table-container">
+                <div class="rankingTable" id="table-container">
                     <div class="dataTable" id="table-money"></div>
                     <div class="dataTable" id="table-breaks"></div>
                 </div>
 
                 <script>
-                    // 色コード（例：§g、§e、§f）のうち、先頭の「§」とその直後の1文字だけ削除する関数
+                    // 色コード（例：§g、§e、§f）のうち、先頭の「§」とその直後の1文字のみ削除する関数
                     function removeColorCodes(str) {
                         return str.replace(/§[a-zA-Z0-9]/g, '').trim();
                     }
 
                     // 生データからテーブル用のデータを抽出し、指定したコンテナにテーブルを生成して表示する関数
-                    function createTableFromRawData(rawData, container) {
+                    // tableType 引数には 'money' または 'breaks' を指定してください
+                    function createTableFromRawData(rawData, container, tableType) {
                         console.log("Raw Data:", rawData);
 
-                        // <br> タグを改行文字に置換（HTML形式の場合の対応）
+                        // HTML形式の場合に備え、<br>タグを改行文字に置換
                         rawData = rawData.replace(/<br\s*\/?>/gi, "\n");
 
                         // 改行コード（CRLF, LF, CRすべてに対応）で分割し、空行を除去する
@@ -122,24 +129,10 @@
                             return;
                         }
 
-                        // ヘッダー（1行目）の色コードを除去して取得
+                        // 1行目はヘッダー。色コードを除去して取得
                         const headerLabel = removeColorCodes(lines[0]);
                         // 2行目以降をデータとして扱う
                         const dataRows = lines.slice(1);
-
-                        // 各行から名前と数値を抽出
-                        const tableData = dataRows.map(row => {
-                            const cleanRow = removeColorCodes(row);
-                            const parts = cleanRow.split(':');
-                            if (parts.length < 2) {
-                                console.log("フォーマットエラーの行:", cleanRow);
-                                return null;
-                            }
-                            return {
-                                name: parts[0].trim(),
-                                money: parts[1].trim()
-                            };
-                        }).filter(item => item !== null);
 
                         // テーブルの生成
                         const table = document.createElement('table');
@@ -148,32 +141,67 @@
 
                         const thName = document.createElement('th');
                         thName.textContent = '名前';
-                        const thMoney = document.createElement('th');
-                        thMoney.textContent = headerLabel;
+                        const thValue = document.createElement('th');
+                        thValue.textContent = headerLabel;
 
                         headerRow.appendChild(thName);
-                        headerRow.appendChild(thMoney);
+                        headerRow.appendChild(thValue);
                         thead.appendChild(headerRow);
                         table.appendChild(thead);
 
                         const tbody = document.createElement('tbody');
-                        tableData.forEach(item => {
+
+                        // 各行から名前と数値を抽出し、テーブルの行を生成
+                        dataRows.forEach((row, index) => {
+                            const cleanRow = removeColorCodes(row);
+                            const parts = cleanRow.split(':');
+                            if (parts.length < 2) {
+                                console.log("フォーマットエラーの行:", cleanRow);
+                                return;
+                            }
+                            let name = parts[0].trim();
+                            const value = parts[1].trim();
+                            let rankClass = '';
+
+                            // 上位3位の場合、対応する絵文字を名前に追加し、クラスを付与
+                            if (index === 0) {
+                                name = '🥇 ' + name;
+                                rankClass = 'first-place';
+                            } else if (index === 1) {
+                                name = '🥈 ' + name;
+                                rankClass = 'second-place';
+                            } else if (index === 2) {
+                                name = '🥉 ' + name;
+                                rankClass = 'third-place';
+                            }
+
                             const tr = document.createElement('tr');
+                            if (rankClass !== '') {
+                                tr.classList.add(rankClass);
+                            }
+
                             const tdName = document.createElement('td');
-                            tdName.textContent = item.name;
-                            const tdMoney = document.createElement('td');
-                            tdMoney.textContent = item.money;
+                            tdName.textContent = name;
+                            const tdValue = document.createElement('td');
+                            tdValue.textContent = value;
+
+                            // money の表は右側を金色、breaks の表は右側を青色にする
+                            if (tableType === 'money') {
+                                tdValue.classList.add('gold-text');
+                            } else if (tableType === 'breaks') {
+                                tdValue.classList.add('blue-text');
+                            }
+
                             tr.appendChild(tdName);
-                            tr.appendChild(tdMoney);
+                            tr.appendChild(tdValue);
                             tbody.appendChild(tr);
                         });
-                        table.appendChild(tbody);
 
-                        // 指定したコンテナにテーブルを追加
+                        table.appendChild(tbody);
                         container.appendChild(table);
                     }
 
-                    // 指定のLeaderboardTypeを使ってAPIからデータを取得し、テーブルを作成する関数
+                    // 指定の LeaderboardType を使って API からデータを取得し、指定のコンテナにテーブルを作成する関数
                     function fetchAndDisplayTable(leaderboardType, containerId) {
                         fetch('https://api.ma27inranma.com/bs-seichi/api/v0/leaderboard', {
                             headers: {
@@ -188,7 +216,7 @@
                             })
                             .then(rawData => {
                                 const container = document.getElementById(containerId);
-                                createTableFromRawData(rawData, container);
+                                createTableFromRawData(rawData, container, leaderboardType);
                             })
                             .catch(error => {
                                 console.log('Error fetching leaderboard data for ' + leaderboardType + ':', error);

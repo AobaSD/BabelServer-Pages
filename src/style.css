@@ -3,7 +3,7 @@ body {
     text-align: center;
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: lightgray;
+    background-color: #d9d9d9;
 }
 
 .wrapper{
@@ -350,10 +350,74 @@ table, th, td {
 
 #table-container {
     display: flex;
-    gap: 20px;
+    gap: 5px;
     align-items: center;
 }
 
 .dataTable {
+    width: 50%;
+}
 
+#table-money th {
+    background-color: #ffda85;
+}
+
+#table-breaks th {
+    background-color: lightblue;
+}
+
+.gold-text {
+    color: #b06f00;
+    font-weight: bold;
+}
+
+.blue-text {
+    color: dodgerblue;
+    font-weight: bold;
+}
+
+.first-place {
+    background-color: #fff2ba;
+}
+
+.second-place {
+    background-color: #e6e6e6;
+}
+
+.third-place {
+    background-color: #dbc59e;
+}
+
+/* #table-container 内のテーブルのみ対象 */
+#table-container table {
+    border-collapse: collapse;
+    width: 90%;
+    border: none;
+}
+
+/* th, td の全側面のボーダーを解除 */
+#table-container th,
+#table-container td {
+    padding: 7px;
+    border-style: none;
+}
+
+/* ヘッダーの下側には太い線を追加 */
+#table-money thead th {
+    border-bottom: 4px solid orangered;
+}
+
+/* 本文の各セルの下側にのみ線を追加 */
+#table-money tbody td {
+    border-bottom: 1px solid orangered;
+}
+
+/* ヘッダーの下側には太い線を追加 */
+#table-breaks thead th {
+    border-bottom: 4px solid royalblue;
+}
+
+/* 本文の各セルの下側にのみ線を追加 */
+#table-breaks tbody td {
+    border-bottom: 1px solid royalblue;
 }
