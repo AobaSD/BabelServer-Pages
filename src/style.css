@@ -264,12 +264,13 @@ footer {
 }
 
 .footer-title {
-    font-size: clamp(10px, 2vw, 20px); /* 通常より大きめ */
+    font-size: clamp(17px, 2vw, 23px);
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .footer-column ul {
+    font-size: clamp(10px, 14px, 17px);
     list-style: none;
     padding: 0;
     margin: 0;
