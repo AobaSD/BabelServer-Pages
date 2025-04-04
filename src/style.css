@@ -323,6 +323,7 @@ table {
     text-align: center;
     width: 90%;
     margin: 0 auto 40px;
+    table-layout: fixed;
 }
 
 table, th, td {
@@ -330,6 +331,7 @@ table, th, td {
     border-collapse: collapse;
     height: 35px;
     font-size: 17px;
+    overflow-wrap: break-word;
 }
 
 .roomNumber {
