@@ -143,6 +143,10 @@ body {
     }
 }
 
+.banner {
+    overflow-x: hidden
+}
+
 .img-announcements:hover{
     filter: brightness(1.5);
     cursor: pointer;
