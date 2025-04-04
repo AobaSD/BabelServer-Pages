@@ -1,7 +1,3 @@
-body {
-    overflow-x: hidden;
-}
-
 @media (min-width: 769px) {
     .slideshow {
         position: relative;
@@ -137,16 +133,11 @@ body {
         margin: 10px auto 0;
         transition: filter 0.2s ease;
         width: 100%;
-        max-width: 100vw;
         height: auto;
         display: block;
-        object-fit: cover;
     }
 }
 
-.banner {
-    overflow-x: hidden
-}
 
 .img-announcements:hover{
     filter: brightness(1.5);
@@ -196,7 +187,6 @@ h1{
 
 .status{
     font-size: 60px;
-    margin-left: 5px;
 }
 
 .status-text-loading{

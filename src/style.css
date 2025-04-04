@@ -11,6 +11,7 @@ body {
     flex-direction: column;
     padding-top: 50px; /* ヘッダーの高さに合わせる */
     box-sizing: border-box;
+    width: 100%;
 }
 
 @media (max-width:768px) {
