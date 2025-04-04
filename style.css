@@ -117,12 +117,12 @@
 }
 
 .img-announcements{
-margin: 10px auto 0;
-transition: filter 0.2s ease;
-width: 100%;
-height: auto;
-display: block;
-    }
+    margin: 10px auto 0;
+    transition: filter 0.2s ease;
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
 .img-announcements:hover{
     filter: brightness(1.5);
