@@ -116,28 +116,13 @@
     100%{ opacity: 0;}
 }
 
-@media (min-width: 769px) {
-    .img-announcements {
-        margin: 10px auto 0;
-        transition: filter 0.2s ease;
-        width: 100%;
-        height: auto;
-        display: block;
+.img-announcements{
+margin: 10px auto 0;
+transition: filter 0.2s ease;
+width: 100%;
+height: auto;
+display: block;
     }
-}
-
-@media (max-width: 768px) {
-    .img-announcements {
-        transform: scale(1.5) translateY(10px);
-        transform-origin: center;
-        margin: 10px auto 0;
-        transition: filter 0.2s ease;
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-}
-
 
 .img-announcements:hover{
     filter: brightness(1.5);
