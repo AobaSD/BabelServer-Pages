@@ -29,11 +29,11 @@
 }
 
 .slideshow-text {
-    font-size: clamp(70px, 6vw, 100px);
+    font-size: clamp(50px, 6vw, 100px);
 }
 
 .slideshow-subtext-span {
-    font-size: clamp(50px, 4vw, 70px);
+    font-size: clamp(40px, 4vw, 70px);
 }
 
 @media (min-width: 769px) {
