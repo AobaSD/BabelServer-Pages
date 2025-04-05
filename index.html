@@ -114,7 +114,7 @@
                 </div>
 
                 <a href="announcements">
-                    <img class="img-announcements"  src="img/announcements.png">
+                    <img alt="announcements-banner" class="img-announcements"  src="img/announcements.png">
                 </a>
 
                 <h1>
@@ -135,6 +135,7 @@
                     </div>
                 </div>
 
+                <!--suppress ExceptionCaughtLocallyJS -->
                 <script>
                     // 必要な変数の宣言(API、更新頻度)
                     const API_ENDPOINT = 'https://api.ma27inranma.com/bs-seichi/api/v0/status';
@@ -145,7 +146,7 @@
                     const countTextElement = document.getElementById('countText');
 
                     async function fetchAndUpdateStatus() {
-                        console.log('Fetching status...');
+                        console.log('APIに接続しています');
 
                         connectionStatusElement.textContent = '⚫取得中';
                         connectionStatusElement.className = 'status-text-loading';
@@ -161,21 +162,22 @@
                                 connectionStatusElement.textContent = '🔴オフライン';
                                 connectionStatusElement.className = 'status-text-offline';
                                 countTextElement.textContent = '0 / 100 人';
+                                console.log('APIに接続できませんでした: サーバーがオフラインです');
                             } else if(!response.ok) {
                                 //　その他の要因で失敗
-                                throw new Error(`API may be dead (ステータス: ${response.status})`);
+                                throw new Error(`APIから取得出来ませんでした (ステータス: ${response.status})`);
                             }
 
                             const data = await response.json();
 
-                            const playerCount = data.connectedPlayers.length
                             countTextElement.textContent = `${playerCount} / 100 人`
+                            const playerCount = data.connectedPlayers.length
 
                             connectionStatusElement.textContent = '🟢オンライン';
                             connectionStatusElement.className = 'status-text-online';
 
                         } catch (error) {
-                            console.error('failed to fetch status:', error);
+                            console.error('APIに接続できませんでした:', error);
                             connectionStatusElement.textContent = '🟣接続失敗';
                             connectionStatusElement.className = 'status-text-error';
                             countTextElement.textContent = '🟣接続失敗';
