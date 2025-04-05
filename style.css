@@ -1,3 +1,9 @@
+@media (max-width: 768px) {
+    .wrapper {
+        overflow-x: hidden;
+    }
+}
+
 @media (min-width: 769px) {
     .slideshow {
         position: relative;
@@ -166,29 +172,60 @@ h1{
     padding-left: 2%;
 }
 
-.status-text{
-    font-size: 30px;
+@media (min-width: 769px) {
+    .status-text{
+        font-size: 30px;
+    }
+
+    .status{
+        font-size: 60px;
+    }
+
+    .status-text-loading{
+        font-size: 60px;
+    }
+
+    .status-text-offline{
+        font-size: 60px;
+        color: red;
+    }
+
+    .status-text-online{
+        font-size: 60px;
+        color: forestgreen;
+    }
+
+    .status-text-error{
+        font-size: 60px;
+        color: purple;
+    }
 }
 
-.status{
-    font-size: 60px;
-}
+@media (max-width: 768px) {
+    .status-text{
+        font-size: 30px;
+    }
 
-.status-text-loading{
-    font-size: 60px;
-}
+    .status{
+        font-size: 50px;
+    }
 
-.status-text-offline{
-    font-size: 60px;
-    color: red;
-}
+    .status-text-loading{
+        font-size: 50px;
+    }
 
-.status-text-online{
-    font-size: 60px;
-    color: forestgreen;
-}
+    .status-text-offline{
+        font-size: 50px;
+        color: red;
+    }
 
-.status-text-error{
-    font-size: 60px;
-    color: purple;
+    .status-text-online{
+        font-size: 50px;
+        color: forestgreen;
+    }
+
+    .status-text-error{
+        font-size: 50px;
+        color: purple;
+    }
 }

@@ -1,0 +1,485 @@
+<!DOCTYPE HTML>
+
+<html lang="ja">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/src/style.css">
+
+        <title>
+            Babel Server
+        </title>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <!-- ヘッダー -->
+            <header>
+                <div class="header-title">
+                    <a href="../" style="color: white; text-decoration: none;">
+                        Babel Server
+                    </a>
+                </div>
+
+                <button class="hamburger-menu" onclick="toggleSideMenu()">☰</button>
+            </header>
+
+            <!-- サイドメニュー -->
+            <side-menu>
+                <div class="side-text">
+                    メニュー
+                </div>
+
+                <button class="side-button" onclick="location.href='../mining-server'">
+                    <span class="button-text-ja">
+                        採掘サーバー
+                    </span>
+
+                    <span class="button-text-en">
+                        Mining Server
+                    </span>
+                </button>
+
+                <button class="side-button" onclick="location.href='../how-to-join'">
+                    <span class="button-text-ja">
+                        参加方法
+                    </span>
+
+                    <span class="button-text-en">
+                        How to join
+                    </span>
+                </button>
+
+                <button class="side-button" onclick="location.href='../moderators'">
+                    <span class="button-text-ja">
+                        権限者
+                    </span>
+
+                    <span class="button-text-en">
+                        Moderators
+                    </span>
+                </button>
+
+                <button class="side-button" onclick="location.href='../announcements'">
+                    <span class="button-text-ja">
+                        お知らせ
+                    </span>
+
+                    <span class="button-text-en">
+                        Announcements
+                    </span>
+                </button>
+
+                <button class="side-button" onclick="location.href='../recruitment'">
+                    <span class="button-text-ja">
+                        採用情報
+                    </span>
+
+                    <span class="button-text-en">
+                        Recruitment
+                    </span>
+                </button>
+
+                <button class="side-button" onclick="location.href='../contact-us'">
+                    <span class="button-text-ja">
+                        お問い合わせ
+                    </span>
+
+                    <span class="button-text-en">
+                        Contact Us
+                    </span>
+                </button>
+
+            </side-menu>
+
+            <div id="overlay"></div>
+
+            <script src="/src/script.js"></script>
+
+            <!-- 内容部分 -->
+            <div class="container">
+                <h1>
+                    Babel Server 参加方法
+                </h1>
+
+                <div class="htjText">
+                    <p class="htjHeader">目次</p>
+                    <hr class="htjLine">
+
+                    <ol>
+                        <li>
+                            <a href="#discord">Discordに参加</a>
+                        </li>
+
+                        <li>
+                            <a href="#minecraft">Minecraft(サーバー)に参加</a>
+                            <ol>
+                                <li><a href="#desktop">デスクトップ・モバイル(スマートフォン, タブレット)の場合</a></li>
+                                <li>
+                                    <a href="#console">コンソール(Switch, PS5など)</a>
+                                    <ol>
+                                        <li><a href="#fc">フレンド欄から参加する方法</a></li>
+                                        <li><a href="#switch">設定を変更して参加する方法(Switch)</a></li>
+                                        <li><a href="#ps5">設定を変更して参加する方法(PS5)</a></li>
+                                        <li><a href="#bedrockConnect">Bedrock Connect を利用して参加する方法(前項目の続き)</a></li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+
+                    <div class="htjMainText">
+                        <p class="htjHeader" id="discord">Discordに参加</p>
+                        <hr class="htjLine">
+
+                        <p class="htjSubText">
+                            「参加」をクリックし、Babel Server に参加しましょう:<br>
+                            ※ただし、もしあなたのアカウントが作りたての場合、スパムを防ぐために数日程度、会話をする権限が与えられません。
+                        </p>
+
+                        <div class="serverWidget">
+                            <!-- 左側：画像 -->
+                            <div class="widgetLeft">
+                                <img src="/img/icon.png" alt="サーバー画像">
+                            </div>
+
+                            <!-- 中央：テキスト（名前とオンライン数） -->
+                            <div class=widgetCenter">
+                                <div class="widgetName">Loading...</div>
+                                <div class="widgetOnline">
+                                    <span class="widgetCircle"></span>Loading...</div>
+                            </div>
+
+                            <!-- 右側：ボタン -->
+                            <div class="widgetRight">
+                                <button onclick="location.href='https://discord.gg/Kuz7KTUDPA'">
+                                    参加
+                                </button>
+                            </div>
+
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    fetch('https://ptb.discord.com/api/guilds/805353518387036221/widget.json')
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            // サーバー名の更新
+                                            const widgetName = document.querySelector('.widgetName');
+                                            if (widgetName) {
+                                                widgetName.textContent = data.name;
+                                            }
+
+                                            // オンライン数の更新（「＊オンライン数 人がオンライン」）
+                                            const widgetOnline = document.querySelector('.widgetOnline');
+                                            if (widgetOnline) {
+                                                widgetOnline.innerHTML = '<span class="widgetCircle"></span>' + data.presence_count + '人がオンライン';
+                                            }
+
+                                            // 参加ボタンの更新：API の instant_invite を利用
+                                            const joinButton = document.querySelector('.widgetRight button');
+                                            if (joinButton) {
+                                                joinButton.onclick = function() {
+                                                    window.open(data.instant_invite, '_blank');
+                                                };
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('API fetch error:', error);
+                                        });
+                                });
+                            </script>
+                        </div>
+
+                        <p class="htjHeader" id="minecraft">Minecraft(サーバー)に参加</p>
+                        <hr class="htjLine">
+
+                        <p class="htjSubText">
+                            Minecraft サーバーに参加するには、<span style="font-weight: bold;">スマートフォンやパソコンと、コンソール機では、それぞれ違う参加方法</span>が必要になります。<br>
+                            詳しくは、以下を確認してください。
+                        </p>
+
+                        <p class="htjHeader" id="desktop">デスクトップ・モバイルの場合</p>
+                        <hr class="htjLine">
+
+                        <p class="htjSubText">
+                            「登録」をクリックすることで、サーバーリストにBabel Serverが登録されます。<br>Minecraft が開かれたら、「サーバー」からBabel Server に参加してください。
+                        </p>
+
+                        <div class="serverWidgetMC">
+                            <!-- 左側：画像 -->
+                            <div class="widgetLeftMC">
+                                <img src="/img/minecrafticon.png" alt="サーバー画像">
+                            </div>
+
+                            <!-- 中央：テキスト（名前とオンライン数） -->
+                            <div class=widgetCenterMC">
+                                <div class="widgetNameMC">Babel Server 採掘鯖</div>
+                                <div class="widgetOnlineMC">
+                                    <span class="widgetCircleMC"></span>Minecraft Bedrock Editionが開きます</div>
+                            </div>
+
+                            <!-- 右側：ボタン -->
+                            <div class="widgetRightMC">
+                                <button onclick="location.href='minecraft:///?addExternalServer=Babel Server%7Cbabelserver.jp:10109'">
+                                    登録
+                                </button>
+                            </div>
+                        </div>
+
+                        <p class="htjSubText">
+                            または、以下のアドレスとポートを使用して参加してください:<br>
+                            <span style="margin-left: 1%;">
+                                アドレス： <code>babelserver.jp</code>
+                            </span><br>
+                            <span style="margin-left: 1%;">
+                                ポート　： <code>10109</code>
+                            </span>
+                        </p>
+
+                        <p class="htjHeader" id="console">コンソールの場合</p>
+                        <hr class="htjLine">
+
+                        <p class="htjSubText">
+                            コンソール版の場合、二種類の方法で参加が可能です。どちらを選ぶかはあなた次第ですが、それぞれメリットもデメリットもあります。<br>
+                            もしこのページ内でよくわからなかった場合、Discordに参加して質問しましょう。
+                        </p>
+
+                        <p class="htjHeader" id="fc">フレンド欄から参加する方法</p>
+                        <hr class="htjLine">
+
+                        <p class="htjSubText">以下の手順で参加することができます。</p>
+                        <ol class="htjSubText">
+                            <li>BabelServer にフレンド申請(Xbox)をする</li>
+                            <li>Minecraft を起動</li>
+                            <li>右上の「フレンド」をクリック</li>
+                            <li>BabelServer の右側にある、「参加」をクリック</li>
+                        </ol>
+                        <p class="htjSubText">※この方法では、設定変更などをせずに参加することが可能です。ただし、コンソール版では接続が不安定になる可能性があります。</p>
+                        <p class="htjSubText" style="margin-top: 50px">これで参加できない場合は：</p>
+                        <ol class="htjSubText">
+                            <li>BabelServer のフレンドを解除</li>
+                            <li>BabelServer にフレンド申請</li>
+                            <li>BabelServerに参加</li>
+                        </ol>
+
+                        <p class="htjHeader" id="switch">設定を変更して参加する方法(Switch)</p>
+                        <hr class="htjLine">
+
+                        <p class="htjSubText">
+                            この方法では、外部のサーバー(<em>BedrockConnect</em>)を使用して参加します。<br>
+                            ただし、以下の点に注意してください。
+                        </p>
+                        <ul class="htjSubText">
+                            <li>THE HIVEなど特集サーバーに参加する場合、通常よりひと手間増えます。</li>
+                            <li>この方法で接続を試みたことにより発生した損害などについて、Babel Server はその一切の責任を負いません。</li>
+                            <li>多少のIT基礎知識がないと実行している内容がわからないかと思いますので、誤って違う設定を変更してしまうことを防ぐために、知識のある大人と一緒に実施、またはやっていることについて知識を付けてから実施することをお勧めします。</li>
+                        </ul>
+                        <p class="htjSubText"><strong>初回の参加方法：</strong></p>
+                        <ol class="htjSubText">
+                            <li>Nintendo Switchのホーム画面で「設定」を開く</li>
+                            <li>左のメニューから「インターネット」を選択</li>
+                            <li>「インターネット設定」を選択</li>
+                            <li>現在接続しているWi-Fiネットワークを選択</li>
+                            <li>「設定の変更」を選択</li>
+                            <li>下へスクロールし、「DNS設定」を「手動」に変更</li>
+                            <li>優先DNS(プライマリーDNS)に <code>104.238.130.180</code> を指定</li>
+                            <li>代替DNS(セカンダリーDNS)に <code>008.008.008.008</code> を指定</li>
+                            <li>「保存」を選択</li>
+                            <li><strong><a href="#bedrockConnect">BedrockConnect</a></strong> を参照してください。</li>
+                        </ol>
+
+                        <p class="htjHeader" id="ps5">設定を変更して参加する方法(PS5)</p>
+                        <hr class="htjLine">
+
+                        <p class="htjSubText">
+                            この方法では、外部のサーバー(<em>BedrockConnect</em>)を使用して参加します。<br>
+                            ただし、以下の点に注意してください。
+                        </p>
+                        <ul class="htjSubText">
+                            <li>THE HIVEなど特集サーバーに参加する場合、通常よりひと手間増えます。</li>
+                            <li>この方法で接続を試みたことにより発生した損害などについて、Babel Server はその一切の責任を負いません。</li>
+                            <li>多少のIT基礎知識がないと実行している内容がわからないかと思いますので、誤って違う設定を変更してしまうことを防ぐために、知識のある大人と一緒に実施、またはやっていることについて知識を付けてから実施することをお勧めします。</li>
+                        </ul>
+                        <p class="htjSubText"><strong>初回の参加方法：</strong></p>
+                        <ol class="htjSubText">
+                            <li>PlayStation 5のホーム画面で「設定」を開く</li>
+                            <li>「ネットワーク」を選択</li>
+                            <li>「設定」を選択</li>
+                            <li>「インターネット接続を設定」を選択</li>
+                            <li>現在接続しているWi-Fiネットワークを選択</li>
+                            <li>「詳細設定」を選択</li>
+                            <li>「DNS設定」を<code>手動</code>に変更</li>
+                            <li>プライマリーDNSを <code>104.238.130.180</code> に変更</li>
+                            <li>セカンダリーDNSを <code>008.008.008.008</code> に変更</li>
+                            <li><strong><a href="#bedrockConnect">BedrockConnect</a></strong> を参照してください。</li>
+                        </ol>
+
+                        <p class="htjHeader" id="bedrockConnect">Bedrock Connectを利用して参加する方法(前項目の続き)</p>
+                        <hr class="htjLine">
+
+                        <ol class="htjSubText">
+                            <li>Minecraft を起動</li>
+                            <li>画面右上の「サーバー」を選択</li>
+                            <li>THE HIVEなど、どれでもよいのでサーバーに参加</li>
+                            <li>サーバーに参加されるまで待機</li>
+                        </ol>
+                        <p class="htjSubText"><strong>初回の参加方法：</strong></p>
+                        <ol class="htjSubText">
+                            <li>「Connect to a Server」を選択</li>
+                            <li>「Server Address」に <code>babelserver.jp</code> を記入</li>
+                            <li>「Server Port」に <code>10109</code> を記入</li>
+                            <li>「(Optional) Display Name on Server List」に <code>Babel Server</code> を記入</li>
+                            <li>「Add to server list」を有効化</li>
+                            <li>「送信」をクリック</li>
+                        </ol>
+                        <p class="htjSubText"><strong>2回目以降の参加方法：</strong></p>
+                        <ol class="htjSubText">
+                            <li>画面内の「Babel Server」を選択</li>
+                            <li>自動でBabel Serverに参加されます。</li>
+                        </ol>
+                        <p class="htjSubText">※THE HIVEなど他のサーバーに参加する場合、この時に画面内から選択してください。</p>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <div class="footer-content">
+                    <!-- 左カラム：排出確率 -->
+                    <div class="footer-column">
+                        <div class="footer-title">
+                            排出確率
+                        </div>
+
+                        <ul>
+                            <li>
+                                <a href="../probability/cave">
+                                    洞窟
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../probability/nether">
+                                    ネザー
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../probability/end">
+                                    エンド
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../probability/ocean">
+                                    海
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../probability/temple">
+                                    海底神殿
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../probability/demise">
+                                    終焉
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../probability/gold">
+                                    黄金
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../probability/heaven">
+                                    天界
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 中央カラム：Babel Server -->
+                    <div class="footer-column">
+                        <div class="footer-title">
+                            Babel Server
+                        </div>
+
+                        <ul>
+                            <li>
+                                <a href="../mining-server">
+                                    採掘サーバー
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../how-to-join">
+                                    参加方法
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../moderators">
+                                    権限者
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../announcements">
+                                    お知らせ
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../recruitment">
+                                    採用情報
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../contact-us">
+                                    お問い合わせ
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 右カラム：その他 -->
+                    <div class="footer-column">
+                        <div class="footer-title">
+                            その他
+                        </div>
+
+                        <ul>
+                            <li>
+                                <a href="../others/ranking">
+                                    ランキング
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../others/room">
+                                    個人部屋
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="../others/about">
+                                    このサイトについて
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- フッター最下部 -->
+                <div class="footer-bottom">
+                    Babel Server
+                </div>
+            </footer>
+        </div>
+    </body>
+
+</html>
