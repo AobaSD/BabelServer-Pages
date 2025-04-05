@@ -355,8 +355,20 @@ table, th, td {
     align-items: center;
 }
 
-.dataTable {
-    width: 50%;
+@media (min-width: 769px) {
+    .dataTable {
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    #table-container {
+        flex-direction: column;
+    }
+
+    .dataTable {
+        width: 95%;
+    }
 }
 
 #table-money th {
