@@ -694,5 +694,37 @@ code {
 
 /* 画像 */
 .cave {
-    background-image: url("../img/cave.png")
+    background-image: url("/img/cave.png");
+}
+
+.nether {
+    background-image: url("/img/nether.png");
+}
+
+.end {
+    background-image: url("/img/end.png");
+}
+
+.ocean {
+    background-image: url("/img/ocean.png");
+}
+
+.temple {
+    background-image: url("/img/temple.png");
+}
+
+.demise {
+    background-image: url("/img/demise.png");
+}
+
+.gold {
+    background-image: url("/img/gold.png");
+}
+
+.heaven {
+    background-image: url("/img/heaven.png");
+}
+
+.textBlack {
+    color: #000000;
 }
