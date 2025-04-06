@@ -632,3 +632,67 @@ code {
     margin-left: 2%;
     font-size: 20px;
 }
+
+.miningServer {
+    text-align: left;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.miningServerHeader {
+    font-size: 25px;
+    font-weight: bold;
+    color: darkgreen;
+    margin-left: 3%;
+    margin-bottom: 0;
+}
+
+.miningServerLine {
+    width: 100%;
+    background-color: darkgreen;
+    height: 1px;
+}
+
+.pageImg {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+}
+
+/* 中央テキストのスタイル */
+.imgMainText {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: clamp(70px, 6vw, 100px);
+    color: white;
+}
+
+.imgMainTextSpan {
+    font-size: clamp(50px, 6vw, 100px);
+}
+
+.imgMainSubTextSpan {
+    font-size: clamp(40px, 4vw, 70px);
+}
+
+.imgMainPicture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 画像 */
+.cave {
+    background-image: url("../img/cave.png")
+}
