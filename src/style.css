@@ -692,7 +692,7 @@ code {
     background-repeat: no-repeat;
 }
 
-/* 画像(出現しない不具合あり？) */
+/* 画像(不具合修正中) */
 .cave {
     background-image: url("/img/cave.png");
 }
