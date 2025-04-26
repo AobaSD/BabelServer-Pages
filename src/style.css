@@ -581,6 +581,7 @@ table, th, td {
 .widgetNameMC {
     font-size: 1.2em;
     font-weight: bold;
+    width: 100%;
     color: #DADADB;
     margin-left: 5%;
 }
@@ -781,19 +782,58 @@ code {
 }
 
 .moderatorsList {
-    height: 400px;
-    width: 100%;
     display: flex;
+    align-items: flex-start;
+    height: 300px;
+    padding: 1%;
 }
 
-.moderatorsImg {
+.moderatorsList:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.moderatorsImage {
+    margin: 0;
+    padding: 0;
     height: 100%;
-    aspect-ratio: 1 / 1;
-    margin: 0 auto;
-    margin-efl
-    background-color: red;
+    object-fit: cover;
+    aspect-ratio: 1/1;
 }
 
-.moderatorsName {
-    font-size: 40px;
+.moderatorsTextBlock {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.moderatorsTextHeader {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.moderatorsTextRole {
+    font-size: 25px;
+    margin-left: 10px;
+    font-weight: bold;
+    color: #004a17;
+}
+
+.moderatorsTextMain {
+    font-size: 35px;
+    margin-left: 30px;
+    color: #2e2e2e;
+    font-weight: bold;
+}
+
+.betaPage {
+    border: 6px solid red;
+    height: auto;
+    width: auto;
+}
+
+.betaPageHeader {
+    font-size: 30px;
+    font-weight: bold;
 }
