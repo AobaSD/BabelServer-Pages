@@ -764,3 +764,36 @@ code {
 .textBlack {
     color: #242429;
 }
+
+.moderatorsHeader {
+    text-align: left;
+    margin-left: 3%;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.moderatorsLine {
+    margin-top: 5px;
+    width: 97%;
+    background-color: purple;
+    height: 1px;
+}
+
+.moderatorsList {
+    height: 400px;
+    width: 100%;
+    display: flex;
+}
+
+.moderatorsImg {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    margin-efl
+    background-color: red;
+}
+
+.moderatorsName {
+    font-size: 40px;
+}
