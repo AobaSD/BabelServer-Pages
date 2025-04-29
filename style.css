@@ -219,3 +219,24 @@ h1 {
         color: purple;
     }
 }
+
+.mainPageMC {
+    display: flex;
+    justify-content: center;
+}
+
+.mainPageMCButton {
+    width: clamp(300px, 30%, 30%);
+    height: 70px;
+    font-size: 30px;
+    background-color: #49d169;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: none;
+    transition: background-color 0.2s;
+    font-weight: bold;
+}
+
+.mainPageMCButton:hover {
+    background-color: #2cbf4e;
+}

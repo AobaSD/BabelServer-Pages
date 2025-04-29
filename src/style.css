@@ -304,6 +304,8 @@ footer {
     font-size: 30px;
     margin-bottom: 0;
     color: darkgreen;
+    border-left: 7px solid darkgreen;
+    padding-left: 0.5em;
 }
 
 .about-text {
@@ -316,10 +318,12 @@ footer {
 
 .tableDescription {
     text-align: left;
-    padding-left: 3%;
+    margin-left: 3%;
+    padding-left: 0.5em;
     font-size: 25px;
     font-weight: bold;
     color: darkgreen;
+    border-left: 7px solid darkgreen;
 }
 
 table {
@@ -477,7 +481,9 @@ table, th, td {
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 5px;
-    margin-left: 2%;
+    margin-left: 1%;
+    border-left: 7px solid darkgreen;
+    padding-left: 0.5em;
 }
 
 .htjText .htjMainText {
@@ -648,14 +654,28 @@ code {
     font-size: 25px;
     font-weight: bold;
     color: darkgreen;
-    margin-left: 3%;
     margin-bottom: 0;
+    border-left: 7px solid darkgreen;
+    padding-left: 0.5em;
 }
 
 .miningServerLine {
     width: 100%;
     background-color: darkgreen;
     height: 1px;
+}
+
+.miningServerText {
+    font-size: 20px;
+    margin-left: 2%;
+}
+
+.miningServerClick {
+    color: #1a1a1a;
+}
+
+.miningServerClick:hover {
+    color: #303030;
 }
 
 .pageImg {
@@ -772,7 +792,7 @@ code {
 
 .moderatorsHeader {
     text-align: left;
-    margin-left: 3%;
+    margin-left: 2%;
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 0;
@@ -850,4 +870,62 @@ code {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     line-height: 1.6;
+}
+
+.announcementsThread {
+    display: flex;
+    gap: 10px;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding: 20px 10px 20px 20px;
+    border: 2px solid dimgray;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    height: auto;
+    min-height: 100px;
+}
+
+.announcementsThreadTextDiv {
+    width: 90%
+}
+
+.announcementsThreadTitle {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.announcementsThreadHeadline {
+    font-size: 20px;
+    color: #2e2e2e;
+    margin-left: 20px;
+}
+
+@media (min-width: 769px) {
+    .announcementsThreadButtonDiv {
+        width: 10%;
+        align-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .announcementsThreadButtonDiv {
+        display: none;
+    }
+}
+
+.announcementsThreadButton {
+    width: 100px;
+    height: 60px;
+    color: white;
+    background-color: #42b355;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.announcementsThreadButton:hover {
+    background-color: #4ad461;
 }
