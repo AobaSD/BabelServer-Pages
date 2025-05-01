@@ -114,82 +114,92 @@
                     お問い合わせ
                 </h1>
 
-                <div class="contactText">
-                    <p class="contactSubText">
-                        お問い合わせをするには、Discordが必要です！以下より参加し、認証を完了してください。
-                    </p>
+                <div class="pageWrapper">
+                    <div class="contactText">
+                        <p class="contactSubText">
+                            お問い合わせをするには、Discordが必要です！以下より参加し、認証を完了してください。
+                        </p>
 
-                    <div class="serverWidget">
-                        <!-- 左側：画像 -->
-                        <div class="widgetLeft">
-                            <img src="/img/icon.png" alt="サーバー画像">
+                        <div class="serverWidget">
+                            <!-- 左側：画像 -->
+                            <div class="widgetLeft">
+                                <img src="/img/icon.png" alt="サーバー画像">
+                            </div>
+
+                            <!-- 中央：テキスト（名前とオンライン数） -->
+                            <div class=widgetCenter">
+                                <div class="widgetName">Loading...</div>
+                                <div class="widgetOnline">
+                                    <span class="widgetCircle"></span>Loading...</div>
+                            </div>
+
+                            <!-- 右側：ボタン -->
+                            <div class="widgetRight">
+                                <button onclick="location.href='https://discord.gg/Kuz7KTUDPA'">
+                                    参加
+                                </button>
+                            </div>
+
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    fetch('https://ptb.discord.com/api/guilds/805353518387036221/widget.json')
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            // サーバー名の更新
+                                            const widgetName = document.querySelector('.widgetName');
+                                            if (widgetName) {
+                                                widgetName.textContent = data.name;
+                                            }
+
+                                            // オンライン数の更新（「＊オンライン数 人がオンライン」）
+                                            const widgetOnline = document.querySelector('.widgetOnline');
+                                            if (widgetOnline) {
+                                                widgetOnline.innerHTML = '<span class="widgetCircle"></span>' + data.presence_count + '人がオンライン';
+                                            }
+
+                                            // 参加ボタンの更新：API の instant_invite を利用
+                                            const joinButton = document.querySelector('.widgetRight button');
+                                            if (joinButton) {
+                                                joinButton.onclick = function() {
+                                                    window.open(data.instant_invite, '_blank');
+                                                };
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('API fetch error:', error);
+                                        });
+                                });
+                            </script>
                         </div>
 
-                        <!-- 中央：テキスト（名前とオンライン数） -->
-                        <div class=widgetCenter">
-                            <div class="widgetName">Loading...</div>
-                            <div class="widgetOnline">
-                                <span class="widgetCircle"></span>Loading...</div>
-                        </div>
+                        <p class="htjHeader">お問い合わせ方法</p>
+                        <hr class="htjLine">
 
-                        <!-- 右側：ボタン -->
-                        <div class="widgetRight">
-                            <button onclick="location.href='https://discord.gg/Kuz7KTUDPA'">
-                                参加
-                            </button>
-                        </div>
+                        <p class="contactSubText">
+                            一般のお問い合わせの場合、以下のチャンネルより「チケット」を発行してください。
+                            <br>
+                            <strong>Babel Server: お問い合わせ</strong><br>
+                        </p>
 
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                                fetch('https://ptb.discord.com/api/guilds/805353518387036221/widget.json')
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        // サーバー名の更新
-                                        const widgetName = document.querySelector('.widgetName');
-                                        if (widgetName) {
-                                            widgetName.textContent = data.name;
-                                        }
+                            <ul style="margin-left: 1%">
+                                <li style="font-size: 1.2em;">
+                                    <a href="https://discord.com/channels/805353518387036221/910885892779036783" class="miningServerClick">お問い合わせチャンネルはこちら</a>
+                                </li>
+                            </ul>
 
-                                        // オンライン数の更新（「＊オンライン数 人がオンライン」）
-                                        const widgetOnline = document.querySelector('.widgetOnline');
-                                        if (widgetOnline) {
-                                            widgetOnline.innerHTML = '<span class="widgetCircle"></span>' + data.presence_count + '人がオンライン';
-                                        }
+                        <p class="contactSubText">
+                            <br><br>
+                            権限者に対する通報の場合、以下のチャンネルの上部より「通報」をクリックしてください。
+                            <br>
+                            <strong>Babel Server: <span style="color: darkred;">権限者通報</span></strong><br>
+                        </p>
 
-                                        // 参加ボタンの更新：API の instant_invite を利用
-                                        const joinButton = document.querySelector('.widgetRight button');
-                                        if (joinButton) {
-                                            joinButton.onclick = function() {
-                                                window.open(data.instant_invite, '_blank');
-                                            };
-                                        }
-                                    })
-                                    .catch(error => {
-                                        console.error('API fetch error:', error);
-                                    });
-                            });
-                        </script>
+                        <ul style="margin-left: 1%">
+                            <li style="font-size: 1.2em;">
+                                <a href="https://ptb.discord.com/channels/805353518387036221/910885892779036783/1241903679221665824" class="miningServerClick">通報フォームはこちら</a>
+                            </li>
+                        </ul>
                     </div>
-
-                    <p class="htjHeader">お問い合わせ方法</p>
-                    <hr class="htjLine">
-
-                    <p class="contactSubText">
-                        一般のお問い合わせの場合、以下のチャンネルより「チケット」を発行してください。
-                        <br><br>
-                        <strong>Babel Server: お問い合わせ</strong><br>
-                        <span style="margin-left: 3%">
-                            <a href="https://discord.com/channels/805353518387036221/910885892779036783">お問い合わせチャンネルはこちら</a>
-                        </span>
-
-                        <br><br><br><br>
-                        権限者に対する通報の場合、以下のチャンネルの上部より「通報」をクリックしてください。
-                        <br><br>
-                        <strong>Babel Server: <span style="color: darkred;">権限者通報</span></strong><br>
-                        <span style="margin-left: 3%">
-                            <a href="https://ptb.discord.com/channels/805353518387036221/910885892779036783/1241903679221665824">通報フォームはこちら</a>
-                        </span>
-                    </p>
                 </div>
             </div>
 
@@ -327,7 +337,7 @@
 
                 <!-- フッター最下部 -->
                 <div class="footer-bottom">
-                    Babel Server
+                    Copyright&copy; 2025 aoba0713 All Rights Reserved.
                 </div>
             </footer>
         </div>

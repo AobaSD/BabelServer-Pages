@@ -296,6 +296,8 @@ footer {
     font-size: 16px;
     border-top: 1px solid #ccc;
     padding-top: 10px;
+    color: #a3a3a3;
+    font-weight: bold;
 }
 
 .about {
@@ -672,10 +674,16 @@ code {
 
 .miningServerClick {
     color: #1a1a1a;
+    font-weight: bold;
+    margin-left: 12px;
 }
 
 .miningServerClick:hover {
     color: #303030;
+}
+
+.miningServerList {
+    display: flex;
 }
 
 .pageImg {
@@ -928,4 +936,20 @@ code {
 
 .announcementsThreadButton:hover {
     background-color: #4ad461;
+}
+
+.recruitmentAffiliation {
+    width: 10%;
+}
+
+.recruitmentRoleName {
+    width: 20%;
+}
+
+.recruitmentTerms {
+    width: 35%;
+}
+
+.recruitmentDetails {
+    width: 35%;
 }
