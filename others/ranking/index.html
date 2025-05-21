@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="../../src/style.css">
 
         <title>
-            Babel Server
+            Babel Server｜ランキング
         </title>
 
         <link rel="icon" href="/img/babel.ico">
@@ -122,7 +122,7 @@
                 </div>
 
                 <script>
-                    // 色コード（例：§g、§e、§f）のうち、先頭の「§」とその直後の1文字のみ削除する関数
+                    // 色コードを削除する関数(§a-z,0-9)
                     function removeColorCodes(str) {
                         return str.replace(/§[a-zA-Z0-9]/g, '').trim();
                     }
@@ -130,7 +130,7 @@
                     // 生データからテーブル用のデータを抽出し、指定したコンテナにテーブルを生成して表示する関数
                     // tableType 引数には 'money' または 'breaks' を指定してください
                     function createTableFromRawData(rawData, container, tableType) {
-                        console.log("Raw Data:", rawData);
+                        console.log('APIに接続しました: 情報の取得が完了');
 
                         // HTML形式の場合に備え、<br>タグを改行文字に置換
                         rawData = rawData.replace(/<br\s*\/?>/gi, "\n");
@@ -138,7 +138,7 @@
                         // 改行コード（CRLF, LF, CRすべてに対応）で分割し、空行を除去する
                         const lines = rawData.trim().split(/\r\n|\n|\r/).filter(line => line.trim() !== "");
                         if (lines.length === 0) {
-                            console.log("データがありません。");
+                            console.log("処理に失敗しました。提供された情報には内容が含まれていません。");
                             return;
                         }
 
@@ -169,7 +169,7 @@
                             const cleanRow = removeColorCodes(row);
                             const parts = cleanRow.split(':');
                             if (parts.length < 2) {
-                                console.log("フォーマットエラーの行:", cleanRow);
+                                console.log("処理に失敗しました。フォーマットエラーの行:", cleanRow);
                                 return;
                             }
                             let name = parts[0].trim();
@@ -223,16 +223,17 @@
                         })
                             .then(response => {
                                 if (!response.ok) {
-                                    throw new Error('Network response was not ok: ' + response.statusText);
+                                    throw new Error(`APIから取得出来ませんでした (ステータス: ${response.status})`);
                                 }
                                 return response.text();
                             })
                             .then(rawData => {
                                 const container = document.getElementById(containerId);
                                 createTableFromRawData(rawData, container, leaderboardType);
+                                console.log('処理が完了しました: テーブルの生成とデータ処理');
                             })
                             .catch(error => {
-                                console.log('Error fetching leaderboard data for ' + leaderboardType + ':', error);
+                                console.log('APIから取得出来ませんでした。詳細: ' + leaderboardType + ':', error);
                             });
                     }
 
