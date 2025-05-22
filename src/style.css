@@ -727,71 +727,71 @@ code {
 
 /* 画像(不具合修正中) */
 .cave {
-    background-image: url("/img/cave.png");
+    background-image: url("/img/cave.avif");
 }
 
 .nether {
-    background-image: url("/img/nether.png");
+    background-image: url("/img/nether.avif");
 }
 
 .end {
-    background-image: url("/img/end.png");
+    background-image: url("/img/end.avif");
 }
 
 .ocean {
-    background-image: url("/img/ocean.png");
+    background-image: url("/img/ocean.avif");
 }
 
 .temple {
-    background-image: url("/img/temple.png");
+    background-image: url("/img/temple.avif");
 }
 
 .demise {
-    background-image: url("/img/demise.png");
+    background-image: url("/img/demise.avif");
 }
 
 .gold {
-    background-image: url("/img/gold.png");
+    background-image: url("/img/gold.avif");
 }
 
 .heaven {
-    background-image: url("/img/heaven.png");
+    background-image: url("/img/heaven.avif");
 }
 
 .mining-server {
-    background-image: url("/img/mining-server.png");
+    background-image: url("/img/mining-server.avif");
 }
 
 .how-to-join {
-    background-image: url("/img/how-to-join.png");
+    background-image: url("/img/how-to-join.avif");
 }
 
 .moderators {
-    background-image: url("/img/moderators.png");
+    background-image: url("/img/moderators.avif");
 }
 
 .announcements {
-    background-image: url("/img/announcements.png");
+    background-image: url("/img/announcements.avif");
 }
 
 .recruitment {
-    background-image: url("/img/recruitment.png");
+    background-image: url("/img/recruitment.avif");
 }
 
 .contact-us {
-    background-image: url("/img/contact-us.png");
+    background-image: url("/img/contact-us.avif");
 }
 
 .ranking {
-    background-image: url("/img/ranking.png");
+    background-image: url("/img/ranking.avif");
 }
 
 .room {
-    background-image: url("/img/room.png");
+    background-image: url("/img/room.avif");
 }
 
 .about-us {
-    background-image: url("/img/about-us.png");
+    background-image: url("/img/about-us.avif");
 }
 
 .textBlack {

@@ -64,23 +64,23 @@
 }
 
 .main1{
-    background-image: url("img/main1.png")
+    background-image: url("img/main1.avif")
 }
 
 .main2{
-    background-image: url("img/main2.png")
+    background-image: url("img/main2.avif")
 }
 
 .main3{
-    background-image: url("img/main3.png")
+    background-image: url("img/main3.avif")
 }
 
 .main4{
-    background-image: url("img/main4.png")
+    background-image: url("img/main4.avif")
 }
 
 .main5{
-    background-image: url("img/main5.png")
+    background-image: url("img/main5.avif")
 }
 
 .img-main:nth-of-type(1) {
