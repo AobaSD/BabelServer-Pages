@@ -211,6 +211,7 @@ side-menu.slide-out {
     line-height: 1.2;
     font-weight: bold;
     transition: background-color 0.07s ease, color 0.07s ease;
+    cursor: pointer;
 }
 
 .side-button:hover{
